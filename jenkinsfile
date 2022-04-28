@@ -17,8 +17,9 @@ pipeline {
         }
         stage('build') {
             steps {
-                withCredentials([usernamePassword(credentialsId: 'expo', passwordVariable: 'PASWORD', usernameVariable: 'USERNAME')]) {
-                    sh "expo login -u '${USERNAME}' -p '${PASSWORD}'"
+                withCredentials([usernamePassword(credentialsId: 'expo', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
+                    sh "expo login -u ${USERNAME}  -p $PASSWORD"
+                    sh "eas build --platform android --profile preview"
                 }
             }
         }
