@@ -1,0 +1,26 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('checkout') {
+            steps {
+                checkout([$class: 'GitSCM', branches: [[name: '*/master']],
+                extensions: [],
+                userRemoteConfigs: [[credentialsId: 'b18edbfb-f594-4ad8-ae8b-f13e336948b8',
+                url: 'https://github.com/MathMedrado/react-jenkins.git']]])
+            }
+        }
+        stage('dependencias') {
+            steps {
+                sh "npm install"
+            }
+        }
+        stage('build') {
+            steps {
+                withCredentials([usernamePassword(credentialsId: 'expo', passwordVariable: 'PASWORD', usernameVariable: 'USERNAME')]) {
+                    sh "expo login -u '${USERNAME}' -p '${PASSWORD}'"
+                }
+            }
+        }
+    }
+}
