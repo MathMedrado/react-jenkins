@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "test-project",
-    "slug": "test-project",
+    "name": "test-project-eas",
+    "slug": "test-project-eas",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -20,10 +20,13 @@
       "supportsTablet": true
     },
     "android": {
+      "packageName": "com.test-project.eas",
+      "versionCode": 1,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.mathmedrado.testprojecteas"
     },
     "web": {
       "favicon": "./assets/favicon.png"
